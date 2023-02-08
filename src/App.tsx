@@ -42,8 +42,6 @@ function App() {
 
    //convertArray(arr1, arr2)
 
-   //console.log('-2'.indexOf('-'));
-
    return (
       <div className="App">
          <header className="App-header">
