@@ -4,13 +4,13 @@ import './App.css';
 function App() {
    const [value, setValue] = useState<string | number>(0);
    const onChangeValue = (e: React.ChangeEvent<HTMLInputElement> & { target: { value: number | string } }) => {
-      let newValue: string = e.target.value
+      let newValue: string | number = e.target.value
       newValue.replace(',', '.');
       if (newValue === '') {
          setValue(0);
       } else if ((newValue[0].indexOf('-') !== -1) && !(newValue.includes('-', 1))) {
          setValue(newValue);
-      } else isNaN(+newValue) ? setValue(value) : setValue(+newValue);
+      } else isNaN(+newValue) ? setValue(+value) : setValue(+newValue);
    }
 
    //third exercise
