@@ -3,15 +3,33 @@ import './App.css';
 
 function App() {
    const [value, setValue] = useState<string | number>(0);
+   const checkDubleValue = (str: string) => {
+      let duble = 0;
+      for (let i = 0; str.length >= i; i++) {
+         if (str[i] === '.') {
+            duble++
+            if (duble > 1) break;
+         }
+      }
+      return duble <= 1
+   }
    const onChangeValue = (e: React.ChangeEvent<HTMLInputElement> & { target: { value: number | string } }) => {
-      let newValue: string | number = e.target.value
-      newValue.replace(',', '.');
+      let newValue: number | string = e.target.value
+      newValue = newValue.replace(',', '.');
+
       if (newValue === '') {
          setValue(0);
       } else if ((newValue[0].indexOf('-') !== -1) && !(newValue.includes('-', 1))) {
          setValue(newValue);
-      } else isNaN(+newValue) ? setValue(+value) : setValue(+newValue);
+      } if (newValue.includes('.', 0) && !(newValue.includes('-', 1))) {
+         if (checkDubleValue(newValue.toString())) {
+            setValue(newValue)
+         }
+      } else {
+         isNaN(+newValue) ? setValue(value) : setValue(+newValue)
+      };
    }
+
 
    //third exercise
    const convertArray = (A: Array<number>, B: Array<number>) => {
