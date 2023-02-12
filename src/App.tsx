@@ -17,7 +17,13 @@ function App() {
       let newValue: number | string = e.target.value
       newValue = newValue.replace(',', '.');
 
-      if (newValue === '') {
+      // second version
+      if (/^\-?\d+\.?\d{0,}$/gm.test(newValue)) {
+         setValue(newValue);
+      }
+
+      //first version
+      /* if (newValue === '') {
          setValue(0);
       } else if ((newValue[0].indexOf('-') !== -1) && !(newValue.includes('-', 1))) {
          setValue(newValue);
@@ -27,7 +33,7 @@ function App() {
          }
       } else {
          isNaN(+newValue) ? setValue(value) : setValue(+newValue)
-      };
+      }; */
    }
 
 
